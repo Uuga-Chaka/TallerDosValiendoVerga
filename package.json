@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/Uuga-Chaka/TallerDosValiendoVerga/issues"
   },
-  "homepage": "https://github.com/Uuga-Chaka/TallerDosValiendoVerga#readme"
+  "homepage": "https://github.com/Uuga-Chaka/TallerDosValiendoVerga#readme",
+  "dependencies": {
+    "consolidate": "^0.15.1",
+    "express": "^4.16.3",
+    "handlebars": "^4.0.11",
+    "mongodb": "^3.0.7",
+    "nodemon": "^1.17.3"
+  }
 }
