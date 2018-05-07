@@ -11,6 +11,8 @@ app.engine('hbs', consolidate.handlebars);
 app.set('views', './views');
 app.set('view engine', 'hbs');
 
+app.use('/documentos',express.static('public/css'));
+
 MongoClient.connect('mongodb://localhost:27017', (err, client) => {
     if (err) throw err;
     db = client.db('test');
@@ -21,7 +23,7 @@ app.get('/', (req, res) => {
     // if (req.query.search) {
     //const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     db.collection(dbName)
-        .find({
+        .find(/*{
             "precio": { 
                 $lt: 500000
             }
@@ -29,15 +31,17 @@ app.get('/', (req, res) => {
         },{
             projection:{
                 nombre:1,
+                img:1,
                 'name.common':1,
                 _id:0
             }
-        }).sort()
+        }*/).sort()
         .toArray((err, result) => {
             console.log(result);
             res.render('index', {
                 // resultados para pasar al hbs
-                nombre: result
+                titulo:'Filtrado de cositas ricas',
+                productos: result
             });
         });
     // }
