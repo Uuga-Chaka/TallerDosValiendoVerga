@@ -5,13 +5,15 @@ const express = require('express'),
 
 var db;
 
+var pageSize = 20;
+
 var dbName = 'productos';
 
 app.engine('hbs', consolidate.handlebars);
 app.set('views', './views');
 app.set('view engine', 'hbs');
 
-app.use('/documentos',express.static('public/css'));
+app.use(express.static('public'));
 
 MongoClient.connect('mongodb://localhost:27017', (err, client) => {
     if (err) throw err;
@@ -19,33 +21,38 @@ MongoClient.connect('mongodb://localhost:27017', (err, client) => {
 });
 
 app.get('/', (req, res) => {
+    var page;
 
     // if (req.query.search) {
     //const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    db.collection(dbName)
-        .find(/*{
-            "precio": { 
-                $lt: 500000
-            }
-            
-        },{
-            projection:{
-                nombre:1,
-                img:1,
-                'name.common':1,
-                _id:0
-            }
-        }*/).sort()
-        .toArray((err, result) => {
-            console.log(result);
-            res.render('index', {
-                // resultados para pasar al hbs
-                titulo:'Filtrado de cositas ricas',
-                productos: result
-            });
+    var prod = db.collection(dbName).find();
+    if (req.query.color)
+        prod.filter({
+            color: req.query.color
         });
+
+    if (req.query.page)
+        page = req.query.page;
+    else
+        page = 1;
+
+        //console.log(page);
+
+    prod.skip(pageSize * (page)).limit(pageSize);
+
+
+    prod.toArray((err, result) => {
+       // console.log(result);
+        res.render('index', {
+            // resultados para pasar al hbs
+            titulo: 'Filtrado de cositas ricas',
+            productos: result
+        });
+    });
     // }
 });
+
+
 //Pero si hice cambios pendejos
 app.post('/get-data', (req, res, next) => {
     var item = {
@@ -64,6 +71,6 @@ function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
 };
 
-app.listen(1234, () => {
+app.listen(1235, () => {
     console.log("Escuchando en el puerto");
 });

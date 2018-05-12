@@ -5,25 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/documentos/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 
 <body>
-    <form action="/nombre" method="get">
-        <input type="text" value="Info to add" name="search">
-        <input type="button" value="Search">
-    </form>
-
-    <h1>{{titulo}}</h1>
     <div class="container">
+        <div class="searchmenu">
+            <div class="filtro">
+                <input type="text" placeholder="precio" id="precio">
+            </div>
+            <div class="filtro">
+                <input type="text" placeholder="color" id="color">
+            </div>
+            <div class="filtro">
+                <input type="text" placeholder="producto" id="producto">
+            </div>
+        </div>
+        <button class="buscar">Buscar</button>
+        <p><span class="carrito">0</span></p>
+
+        <!-- <select name="productos" id="">
+            <option value="red">Red</option>
+            <option value="green">Green</option>
+            <option value="blue">Blue</option>
+        </select> -->
+<div class="menu">
+        <h1>{{titulo}}</h1>
+</div>
+
         {{#each productos}}
         <div class="producto">
-        <img src="{{img}}" alt="">
-        <p>{{nombre}}</p>
+            <img src="{{img}}" alt="">
+            <p>{{nombre}}</p>
         </div>
         {{/each}}
     </div>
+    <script src="js/producto.js"></script>
 </body>
 
 </html>
