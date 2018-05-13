@@ -1,0 +1,26 @@
+.menu ul{
+    list-style-type:none ;
+    margin:  0;
+    padding: 0;
+    li{
+        display: inline;
+    }
+    a{
+        display: inline;
+    }
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+    .searchmenu{
+        width: 100%;
+        .filtro{
+            display: inline-block;
+            width: 33%;
+            select{
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,7 +1,9 @@
 var precio = document.getElementById('precio');
 var color = document.getElementById('color');
-var producto = document.getElementById('producto');
-
+var year = document.getElementById('year');
+/*var precio = e.options[e.selectedIndex];
+var year = a.options[a.selectedIndex]
+*/
 document.querySelector('.buscar').addEventListener('click', function (e) {
     e.preventDefault();
 
@@ -9,11 +11,13 @@ document.querySelector('.buscar').addEventListener('click', function (e) {
     var result;
     if (!(precio.value == "" || precio.value == null)) {
         if (link == null)
-            link = 'precio='+ trim(precio.value.trim);
+            link = 'precio='+ trim(precio.value);
         else {
             var str = '&precio=' + trim(precio.value);
             link = link.concat(str);
         }
+    }else{
+        console.log('isEmpty');
     }
 
     if (!(color.value == "" || color.value == null)){
@@ -23,15 +27,24 @@ document.querySelector('.buscar').addEventListener('click', function (e) {
             var str = '&color=' + trim(color.value);
             link = link.concat(str);
         }
+    }else{
+        console.log('isEmpty');
     }
 
-    if (!(producto.value == "" || producto.value == null)){
+    if (!(year.value == "" || year.value == null)){
         if (link == null)
-            link = 'producto='+ trim(producto.value);
+            link = 'year='+ trim(year.value);
         else {
-            var str = '&producto=' + trim(producto.value);
+            var str = '&year=' + trim(year.value);
             link = link.concat(str);
         }
+    }else{
+        console.log('isEmpty');
     }
-    location.href = '/?' + link;
+    console.log(link)
+   location.href = '/?' + link;
 });
+
+function trim(value) {
+    return value.replace(/^\s+|\s+$/g,"");
+}

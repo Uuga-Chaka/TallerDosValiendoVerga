@@ -10,34 +10,69 @@
 </head>
 
 <body>
+    <div class="menu">
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">About Us</a></li>
+            <li><a href="">Contact us</a></li>
+        </ul>
+    </div>
     <div class="container">
         <div class="searchmenu">
             <div class="filtro">
-                <input type="text" placeholder="precio" id="precio">
+                <select name="productos" aria-placeholder="Precio" id="precio">
+                    <option hidden disabled selected value> -- select a price -- </option>
+                    <option value="350000">350000</option>
+                    <option value="450000">450000</option>
+                    <option value="750000">750000</option>
+                </select>
             </div>
             <div class="filtro">
-                <input type="text" placeholder="color" id="color">
+                <select type="text" aria-placeholder="year" id="year">
+                    <option hidden disabled selected value> -- select a year -- </option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                </select>
             </div>
             <div class="filtro">
-                <input type="text" placeholder="producto" id="producto">
+                <select name="color" id="color">
+                    <option hidden disabled selected value> -- select a color -- </option>
+                    <option value="red">red</option>
+                    <option value="blue">blue</option>
+                    <option value="white">white</option>
+                    <option value="gold">gold</option>
+                    <option value="brown">brown</option>
+                    <option value="orange">orange</option>
+                    <option value="yellow">yellow</option>
+                    <option value="green">green</option>
+                </select>
             </div>
         </div>
         <button class="buscar">Buscar</button>
-        <p><span class="carrito">0</span></p>
+        <p>
+            <span class="carrito">0</span>
+        </p>
 
-        <!-- <select name="productos" id="">
-            <option value="red">Red</option>
-            <option value="green">Green</option>
-            <option value="blue">Blue</option>
-        </select> -->
-<div class="menu">
-        <h1>{{titulo}}</h1>
-</div>
+        <!--  -->
+        <div class="menu">
+            <h1>{{titulo}}</h1>
+        </div>
 
         {{#each productos}}
         <div class="producto">
-            <img src="{{img}}" alt="">
-            <p>{{nombre}}</p>
+            <img src="" alt="">
+            <p>{{object}}</p>
         </div>
         {{/each}}
     </div>

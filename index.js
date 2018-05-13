@@ -22,30 +22,36 @@ MongoClient.connect('mongodb://localhost:27017', (err, client) => {
 
 app.get('/', (req, res) => {
     var page;
-
-    // if (req.query.search) {
-    //const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     var prod = db.collection(dbName).find();
+
     if (req.query.color)
         prod.filter({
             color: req.query.color
         });
+
+    if (req.query.year)
+        prod.filter({
+            year: parseInt(req.query.year)
+        })
 
     if (req.query.page)
         page = req.query.page;
     else
         page = 1;
 
-        //console.log(page);
-
-    prod.skip(pageSize * (page)).limit(pageSize);
+    // console.log(page);
+    var n = pageSize * page;
+    prod.skip(n).limit(pageSize);
 
 
     prod.toArray((err, result) => {
-       // console.log(result);
+        console.log(result);
         res.render('index', {
             // resultados para pasar al hbs
             titulo: 'Filtrado de cositas ricas',
+            year: req.query.year,
+            color: req.query.color,
+
             productos: result
         });
     });
@@ -67,10 +73,7 @@ app.post('/get-data', (req, res, next) => {
     res.redirect('/');
 });
 
-function escapeRegex(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
 
 app.listen(1235, () => {
-    console.log("Escuchando en el puerto");
+    console.log("Escuchando en el puerto 1235");
 });
