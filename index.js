@@ -1,7 +1,8 @@
 const express = require('express'),
     consolidate = require('consolidate'),
     MongoClient = require('mongodb').MongoClient,
-    app = express();
+    app = express(),
+    exhbs = require('handlebars');
 
 var db;
 
@@ -40,27 +41,28 @@ app.get('/', (req, res) => {
     else
         page = 1;
 
-    var numItems = prod.count()
-    numItems.then(function (value) {
-      //  callback(value)
+    var numItems = prod.count();
 
-        var n = pageSize * page;
-        prod.skip(n).limit(pageSize);
-        
-        prod.toArray((err, result) => {
-            console.log(value);
-            res.render('index', {
-                // resultados para pasar al hbs
-                titulo: 'Filtrado de cositas ricas',
-                year: req.query.year,
-                color: req.query.color,
-                productos: result,
-                pagess: value
-            });
-        });
+    numItems.then(function (value) {
+
     });
 
-    // }
+
+    prod.count((err, count) => {
+        const contar = count;
+        prod.skip((pageSize * page) - pageSize).limit(pageSize).toArray((err, result) => {
+            if (err) return next(err);
+            res.render('index', {
+                titulo: "Filtrado de cositas ricas",
+                year: req.query.year,
+                current: "20",
+                color: req.query.color,
+                productos: result,
+                np: Math.ceil(contar / 20)
+            });
+            console.log(parseInt(Math.ceil(contar / 20)));
+        });
+    });
 });
 
 
@@ -78,7 +80,16 @@ app.post('/get-data', (req, res, next) => {
     res.redirect('/');
 });
 
+exhbs.registerHelper('times',(n, block)=>{
+    var accum = "";
+    parseInt(n);
+    for(var i = 0; i<n;i++){
+        accum+= block.fn(i);
+    }
+    return accum;
+});
 
-app.listen(1235, () => {
-    console.log("Escuchando en el puerto 1235");
+
+app.listen(1236, () => {
+    console.log("Escuchando en el puerto 1236");
 });

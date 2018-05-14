@@ -12,10 +12,18 @@
 <body>
     <div class="menu">
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Products</a></li>
-            <li><a href="">About Us</a></li>
-            <li><a href="">Contact us</a></li>
+            <li>
+                <a href="">Home</a>
+            </li>
+            <li>
+                <a href="">Products</a>
+            </li>
+            <li>
+                <a href="">About Us</a>
+            </li>
+            <li>
+                <a href="">Contact us</a>
+            </li>
         </ul>
     </div>
     <div class="container">
@@ -63,18 +71,27 @@
 
         <!--  -->
         <div class="menu">
-            <h1>{{titulo}} - {{pagess}}</h1>
+            <h1>{{current}}-{{np}} </h1>
         </div>
 
         {{#each productos}}
         <div class="producto">
             <img src="img/{{object}}-{{color}}.jpg" alt="">
-            
+
             <p>{{object}}</p>
         </div>
         {{/each}}
+        <div id="pagination">
+            <ul>
+                {{#times np}}
+                <li>
+                    <a href="">{{this}}</a>
+                </li>
+                {{/times}}
+            </ul>
+        </div>
     </div>
     <script src="js/producto.js"></script>
+    <script src="js/helper.js"></script>
 </body>
-
 </html>
