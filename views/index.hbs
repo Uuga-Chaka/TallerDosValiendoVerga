@@ -51,10 +51,8 @@
                     <option value="red">red</option>
                     <option value="blue">blue</option>
                     <option value="white">white</option>
-                    <option value="gold">gold</option>
-                    <option value="orange">orange</option>
+                    <option value="black">black</option>
                     <option value="yellow">yellow</option>
-                    <option value="green">green</option>
                 </select>
             </div>
         </div>
@@ -65,12 +63,12 @@
 
         <!--  -->
         <div class="menu">
-            <h1>{{titulo}}</h1>
+            <h1>{{titulo}} - {{pagess}}</h1>
         </div>
 
         {{#each productos}}
         <div class="producto">
-            <img src="img/{{object}}.png" alt="">
+            <img src="img/{{object}}-{{color}}.jpg" alt="">
             
             <p>{{object}}</p>
         </div>

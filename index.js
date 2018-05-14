@@ -20,6 +20,7 @@ MongoClient.connect('mongodb://localhost:27017', (err, client) => {
     db = client.db('test');
 });
 
+var items;
 app.get('/', (req, res) => {
     var page;
     var prod = db.collection(dbName).find();
@@ -39,21 +40,26 @@ app.get('/', (req, res) => {
     else
         page = 1;
 
-    // console.log(page);
-    var n = pageSize * page;
-    prod.skip(n).limit(pageSize);
+    var numItems = prod.count()
+    numItems.then(function (value) {
+      //  callback(value)
 
-
-    prod.toArray((err, result) => {
-        console.log(result);
-        res.render('index', {
-            // resultados para pasar al hbs
-            titulo: 'Filtrado de cositas ricas',
-            year: req.query.year,
-            color: req.query.color,
-            productos: result
+        var n = pageSize * page;
+        prod.skip(n).limit(pageSize);
+        
+        prod.toArray((err, result) => {
+            console.log(value);
+            res.render('index', {
+                // resultados para pasar al hbs
+                titulo: 'Filtrado de cositas ricas',
+                year: req.query.year,
+                color: req.query.color,
+                productos: result,
+                pagess: value
+            });
         });
     });
+
     // }
 });
 
