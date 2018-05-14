@@ -51,7 +51,6 @@ app.get('/', (req, res) => {
             titulo: 'Filtrado de cositas ricas',
             year: req.query.year,
             color: req.query.color,
-
             productos: result
         });
     });
