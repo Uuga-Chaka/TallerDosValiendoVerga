@@ -1,31 +1,71 @@
-*{
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200i,300i,900i');
+$mont: 'Montserrat', sans-serif;
+* {
     padding: 0;
     margin: 0;
+    font-family: $mont;
 }
 
-.menu{
+body {
+    background-color: black;
+}
+
+.menu {
     width: 100%;
-    ul{
-        list-style-type:none ;
-        //width: 80%;
-       text-align: center;
-        li{
+    ul {
+        list-style-type: none; //width: 80%;
+        text-align: center;
+        li {
             text-align: center;
             display: inline-block;
         }
     }
 }
 
-.container{
-    width: 90%;
+.container {
+    width: 70%;
     margin: auto;
-    .searchmenu{
+    padding: 0;
+    list-style: none;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+    .searchmenu {
         width: 100%;
-        .filtro{
+        .filtro {
             display: inline-block;
             width: 33%;
-            select{
+            select {
                 width: 100%;
+            }
+        }
+    }
+    .producto {
+        padding: 5px;
+        width: 200px;
+        height: 300px;
+        margin-top: 10px; // line-height: 274px;
+        color: white;
+        font-weight: bold;
+        text-align: left;
+        overflow: hidden;
+        p {
+            transition: all 0.35s ease;
+            position: static;
+            top: 10px;
+            color: white;
+            text-transform: uppercase;
+            font-size: 15px;
+            transform: translateX(-110px);
+        }
+        &:hover {
+            cursor: pointer;
+            p {
+                transform: translateX(0px);
             }
         }
     }
