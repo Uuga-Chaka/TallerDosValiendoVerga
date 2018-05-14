@@ -4,6 +4,11 @@ var year = document.getElementById('year');
 /*var precio = e.options[e.selectedIndex];
 var year = a.options[a.selectedIndex]
 */
+
+function trim(value) {
+    return value.replace(/^\s+|\s+$/g,"");
+}
+
 document.querySelector('.buscar').addEventListener('click', function (e) {
     e.preventDefault();
 
@@ -45,6 +50,3 @@ document.querySelector('.buscar').addEventListener('click', function (e) {
    location.href = '/?' + link;
 });
 
-function trim(value) {
-    return value.replace(/^\s+|\s+$/g,"");
-}
