@@ -1,4 +1,4 @@
-var precio = document.getElementById('precio');
+var producto = document.getElementById('producto');
 var color = document.getElementById('color');
 var year = document.getElementById('year');
 /*var precio = e.options[e.selectedIndex];
@@ -14,11 +14,11 @@ document.querySelector('.buscar').addEventListener('click', function (e) {
 
     var link;
     var result;
-    if (!(precio.value == "" || precio.value == null)) {
+    if (!(producto.value == "" || producto.value == null)) {
         if (link == null)
-            link = 'precio='+ trim(precio.value);
+            link = 'producto='+ trim(producto.value);
         else {
-            var str = '&precio=' + trim(precio.value);
+            var str = '&producto=' + trim(producto.value);
             link = link.concat(str);
         }
     }else{

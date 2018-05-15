@@ -41,6 +41,12 @@ app.get('/', (req, res) => {
         });
     }
 
+    if (req.query.producto) {
+        prod.filter({
+            object: req.query.producto
+        });
+    };
+
     if (req.query.page)
         page = parseInt(req.query.page);
     else
