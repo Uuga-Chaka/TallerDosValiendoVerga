@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>{{info.object}} {{year}} {{color}}</title>
+</head>
+
+<body>
+    <div class="menu">
+        <ul>
+            <li>
+                <a href="">Home</a>
+            </li>
+            <li>
+                <a href="/">Products</a>
+            </li>
+            <li>
+                <a href="">About Us</a>
+            </li>
+            <li>
+                <a href="">Contact us</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="document">
+            <h1>{{object}} {{year}} {{color}}</h1>
+            <h3>${{price}}</h3>
+            <img src="../img/hd/{{object}}-{{color}}.jpg" alt="">
+            <div class="right">
+                <h2>Caracteristicas</h2>
+                <p>Some shitty text</p>
+                <p class="desc">This {{object}}'s price is ${{price}} its color is {{color}} also is very useful to you. It can't nevere
+                    be destroyed, and its size is {{inches}}cm</p>
+                <button class="agregar">Agregar</button>
+                <p class="nota">- Compra Protegida, recibe el producto que esperabas o te devolvemos tu dinero.</p>
+                <p class="nota">- Sumas 499 Mercado Puntos.</p>
+            </div>
+        </div>
+    </div>
+    <div class="carrito">
+            <p>Carrito:
+                <span class="size">0</span>
+            </p>
+        </div>
+</body>
+
+</html>

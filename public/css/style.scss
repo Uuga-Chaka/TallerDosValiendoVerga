@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200i,300i,900i');
-$mont: 'Montserrat', sans-serif;
+$mont: 'Montserrat',
+sans-serif;
 * {
     padding: 0;
     margin: 0;
@@ -12,12 +13,32 @@ body {
 
 .menu {
     width: 100%;
+    position: fixed;
+    background: black;
+    padding: 20px;
     ul {
         list-style-type: none; //width: 80%;
         text-align: center;
         li {
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 900;
+            padding: 0 20px 0 20px;
+            color: white;
             text-align: center;
             display: inline-block;
+            a {
+                font-style: inherit;
+                color: white;
+                text-decoration: none;
+                &:visited {
+                    color: white;
+                }
+                &:hover {
+                    // color: red;
+                    color: rgb(135, 203, 224);
+                }
+            }
         }
     }
 }
@@ -36,37 +57,192 @@ body {
     justify-content: space-around;
     .searchmenu {
         width: 100%;
+        padding-top: 120px;
         .filtro {
             display: inline-block;
             width: 33%;
+            height: 30px;
             select {
                 width: 100%;
+                height: 100%;
+            }
+        }
+        .buscar {
+            padding: 10px;
+            margin-top: 10px;
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+            &:hover {
+                background-color: white;
+                color: black;
+            }
+            &:active {
+                background-color: grey;
             }
         }
     }
     .producto {
         padding: 5px;
         width: 200px;
-        height: 200px;
+        height: 300px;
         margin-top: 10px; // line-height: 274px;
         color: white;
-        font-weight: bold;
+        border: 1px solid white;
+        font-weight: 900;
         text-align: left;
         overflow: hidden;
-        p {
-            transition: all 0.35s ease;
-            position: static;
-            top: 10px;
+        a {
+            text-decoration: none;
+            color: white;
+            .info {
+                width: 50%;
+                p {
+                    transition: all 0.35s ease;
+                    position: static;
+                    top: 10px;
+                    color: white;
+                    text-transform: uppercase;
+                    font-size: 16px; //   transform: translateX(-110px);
+                }
+                #price {
+                    font-weight: 200;
+                    font-style: italic;
+                    font-size: 12px;
+                }
+            }
+            .desc {
+                padding-top: 8px;
+                font-weight: 200;
+                font-style: italic;
+                font-size: 12px;
+            }
+        }
+        .agregar {
+            float: right;
+            background-color: black;
+            border: 1px solid white;
+            color: white;
+            padding: 5px;
+            &:hover {
+                background-color: white;
+                color: black;
+            }
+            &:active {
+                background-color: grey;
+            }
+        }
+    }
+    #pagination {
+        width: 100%;
+        padding-top: 50px;
+        ul {
+            list-style-type: none; //width: 80%;
+            text-align: center;
+            a {
+                color: white;
+                text-decoration: none;
+                li {
+                    width: 20px;
+                    text-align: center;
+                    display: inline-block;
+                    padding: 10px;
+                    margin-top: 3px;
+                    border: 1px solid white;
+                    background-color: black;
+                    text-decoration: none;
+                    color: white;
+                    &:hover {
+                        color: black;
+                        background-color: white;
+                    }
+                    &:active {
+                        background-color: grey;
+                    }
+                }
+            }
+        }
+    }
+    .document {
+        padding-top: 70px;
+        h1 {
             color: white;
             text-transform: uppercase;
-            font-size: 16px;
-            transform: translateX(-110px);
         }
-        &:hover {
-            cursor: pointer;
-            p {
-                transform: translateX(0px);
+        h3 {
+            text-align: left;
+            font-weight: 300;
+            color: white;
+            padding-bottom: 20px;
+            border-bottom: 1px solid white;
+        }
+        img {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 5px;
+            border: 1px solid white;
+        }
+        .right {
+            margin: 40px 0 0 20px;
+            padding: 5px;
+            float: right;
+            width: 30%;
+            border: 1px solid white;
+            h2 {
+                padding: 5px;
+                text-transform: uppercase;
+                color: white;
             }
+            p {
+                padding: 5px;
+                font-weight: 300;
+                color: white;
+            }
+            .desc {
+                padding: 5px;
+                padding-top: 40px;
+                font-size: 14px;
+            }
+            .agregar {
+                clear: both; // float: right;
+                background-color: black;
+                border: 1px solid white;
+                color: white;
+                padding: 5px 0 5px 0;
+                width: 100%;
+                margin-top: 150px;
+                &:hover {
+                    background-color: white;
+                    color: black;
+                }
+                &:active {
+                    background-color: grey;
+                }
+            }
+            .nota {
+                padding: 5px;
+                font-size: 10px;
+                color: white;
+                margin-top: 8px;
+            }
+        }
+    }
+}
+
+.carrito {
+    width: 100px;
+    height: 50px;
+    position: fixed;
+    top: 110px;
+    right: 0px;
+    ;
+    background-color: white;
+    p {
+        text-align: center;
+        padding-top: 14px;
+        color: black;
+        .size {
+            font-weight: 900;
         }
     }
 }

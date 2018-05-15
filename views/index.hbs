@@ -63,35 +63,44 @@
                     <option value="yellow">yellow</option>
                 </select>
             </div>
-        </div>
-        <button class="buscar">Buscar</button>
-        <p>
-            <span class="carrito">0</span>
-        </p>
-
-        <!--  -->
-        <div class="menu">
-            <h1>{{current}}-{{np}} </h1>
+            <button class="buscar">Buscar</button>
         </div>
 
         {{#each productos}}
-        <div class="producto">
-            <img src="img/{{object}}-{{color}}.jpg" alt="">
-
-            <p>{{object}}</p>
+        <div class="producto" data-id="{{this._id}}">
+            <a href="/producto/{{this._id}}">
+                <img src="img/{{object}}-{{color}}.jpg" alt="">
+                <div class="info">
+                    <p>{{object}}- {{year}}</p>
+                    <p id="price">${{price}}</p>
+                </div>
+                <p class="desc">This {{object}}'s price is ${{price}} its color is {{color}} is very usefull, and can't nevere be destroyed,
+                    and its size is {{inches}}cm
+                </p>
+            </a>
+            <button class="agregar">Agregar</button>
         </div>
         {{/each}}
+        
         <div id="pagination">
             <ul>
                 {{#times np}}
-                <li>
-                    <a href="">{{this}}</a>
-                </li>
+                <a href="{{lookup}}?page={{this}}" value="">
+                    <li>
+                        {{this}}
+                    </li>
+                </a>
                 {{/times}}
             </ul>
         </div>
     </div>
+    <div class="carrito">
+            <p>Carrito:
+                <span class="size">0</span>
+            </p>
+        </div>
     <script src="js/producto.js"></script>
-    <script src="js/helper.js"></script>
+    <script src="js/cliente.js"></script>
 </body>
+
 </html>
