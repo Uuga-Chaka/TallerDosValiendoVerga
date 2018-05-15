@@ -137,7 +137,7 @@ app.get('/producto/:id', (req, res) => {
 exhbs.registerHelper('times', (n, block) => {
     var accum = "";
     parseInt(n);
-    for (var i = 1; i < n + 1; i++) {
+    for (var i = 0; i < n; i++) {
         accum += block.fn(i);
     }
     return accum;

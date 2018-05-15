@@ -1,5 +1,7 @@
-function actulizarCarrito(){
-    document.querySelector('.carrito .size').innerHTML = arreglo.lenght;
+
+//Actualizar el maricon carro
+var actulizarCarrito = function (){
+    document.querySelector('.carrito').innerHTML = arreglo.lenght;
 }
 
 var arreglo = JSON.parse(localStorage.getItem('arreglo'));
