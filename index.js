@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
 
         prod.skip(n).limit(pageSize);
         prod.toArray((err, result) => {
-            console.log(value);
+            //console.log(value);
             res.render('index', {
                 // resultados para pasar al hbs
                 titulo: 'Filtrado de cositas ricas',
@@ -72,7 +72,7 @@ app.get('/', (req, res) => {
         });
     });
 
-    console.log(numItems);
+   // console.log(numItems);
     /*
         prod.count((count) => {
             const contar = count;
@@ -122,7 +122,7 @@ app.get('/producto/:id', (req, res) => {
     db.collection(dbName).find({
         "_id": ObjectID(id)
     }).toArray((err, result) => {
-        console.log(result);
+       // console.log(result);
         res.render("producto", {
             object: result[0].object,
             color: result[0].color,
@@ -131,6 +131,23 @@ app.get('/producto/:id', (req, res) => {
             inches: result[0].inches
         });
     });
+});
+
+app.get('/productosPorIds', (req, res) => {
+    console.log(req.query.ids);
+    var arreglo = req.query.ids.split(',');
+    arreglo = arreglo.map(function (id) {
+        return new ObjectID(id);
+    });
+    var prod = db.collection(dbName)
+        .find({
+            _id: {
+                $in: arreglo
+            }
+        })
+        .toArray((err, result) => {
+            res.send(result);
+        });
 });
 
 
