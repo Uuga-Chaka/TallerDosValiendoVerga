@@ -16,10 +16,10 @@
                 <a href="">Home</a>
             </li>
             <li>
-                <a href="">Products</a>
+                <a href="/">Products</a>
             </li>
             <li>
-                <a href="">About Us</a>
+                <a href="/checkout">Checkout</a>
             </li>
             <li>
                 <a href="">Contact us</a>
@@ -27,6 +27,9 @@
         </ul>
     </div>
     <div class="container">
+        <div class="title">
+            <h1>Products</h1>
+        </div>
         <div class="searchmenu">
             <div class="filtro">
                 <select name="productos" aria-placeholder="Precio" id="producto">
@@ -84,7 +87,7 @@
             <button class="agregar">Agregar</button>
         </div>
         {{/each}}
-        
+
         <div id="pagination">
             <ul>
                 {{#times np}}
@@ -98,10 +101,13 @@
         </div>
     </div>
     <div class="carrito">
-            <p>Carrito:
-                <span class="size">0</span>
-            </p>
-        </div>
+        <p>Carrito:
+            <span class="size">0</span>
+        </p>
+    </div>
+    <footer>
+        <p>Juan Pablo Gallego - All Rights Reserved</p>
+    </footer>
     <script src="js/cliente.js"></script>
     <script src="js/producto.js"></script>
 </body>
